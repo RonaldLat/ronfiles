@@ -21,7 +21,7 @@ create_symlink() {
 
 # Example usage:
 #create_symlink "/path/to/source_file1" "/path/to/link1"
-#create_symlink "/path/to/source_file2" "/path/to/link2"
+#create_symlink "~/.zshrc" "~/.zshrc"
 create_symlink "~/dotfiles/ron.sh" "~/ron.sh"
 
 # Source the .zshrc file
