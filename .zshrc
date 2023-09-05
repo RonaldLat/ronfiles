@@ -9,6 +9,26 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="tjkirch" # set by `omz`
+source ~/antigen
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme robbyrussell
+
+# Tell Antigen that you're done.
+antigen apply
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -106,5 +126,3 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="bg=#114f5e"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cat="batcat"
 alias nvim="exec ~/ronfiles/nvim.appimage"
-source /home/ronald/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/ronald/zsh-autosuggestions/zsh-autosuggestions.zsh
