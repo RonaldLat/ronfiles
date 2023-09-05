@@ -14,15 +14,15 @@ create_symlink() {
     local link_name="$2"
 
     if ! symlink_exists "$link_name"; then
-        ln -s "$source_file" "$link_name"
+        ln -sf "$source_file" "$link_name"
         LINKED_FILES+=("$link_name")
     fi
 }
 
 # Example usage:
 #create_symlink "/path/to/source_file1" "/path/to/link1"
-#create_symlink "~/.zshrc" "~/.zshrc"
-create_symlink "~/dotfiles/ron.sh" "~/ron.sh"
+create_symlink "~/.zshrc" "~/.zshrc"
+create_symlink "~/ron.sh" "~/ron.sh"
 
 # Source the .zshrc file
 source ~/.zshrc
