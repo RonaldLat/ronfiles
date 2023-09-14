@@ -41,16 +41,30 @@ target_file="$HOME/.tmux.conf"
 if [ -f "$source_file" ]; then
     # Check if the target file already exists
     if [ -f "$target_file" ]; then
+	source "$HOME/tmux.conf"
         echo "Symlink already exists: $target_file -> $source_file"
     else
         # Create a symbolic link to 'tmux.conf' in the home directory
         ln -s "$source_file" "$target_file"
+	source "$HOME/tmux.conf"
         echo "Symlink created: $target_file -> $source_file"
     fi
 else
     echo "Error: Source file '$source_file' does not exist."
 fi
 ###########################################################
+
+# Check if zap is already installed
+if command -v zap &>/dev/null; then
+    echo "zap is already installed."
+else
+    # Install zap using the provided command
+    echo "Installing zap..."
+    zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+fi
+
+###########################################################
+
 # Define the path to the 'nvim.appimage' and the alias you want to create
 alias_name="nvim"
 alias_command="$(pwd)/nvim.appimage"
@@ -74,15 +88,3 @@ fi
 
 
 ###########################################################
-
-# Check if zap is already installed
-if command -v zap &>/dev/null; then
-    echo "zap is already installed."
-else
-    # Install zap using the provided command
-    echo "Installing zap..."
-    zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
-fi
-
-###########################################################
-
