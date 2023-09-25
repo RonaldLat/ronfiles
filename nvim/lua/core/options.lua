@@ -32,6 +32,12 @@ opt.smartcase = true        -- Ignore lowercase for the whole pattern
 opt.linebreak = true        -- Wrap on word boundary
 opt.termguicolors = true    -- Enable 24-bit RGB colors
 opt.laststatus=3            -- Set global statusline
+opt.scrolloff=8             --scroll offset
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = false
+opt.signcolumn = "yes"
 
 
 ---------------------------------
@@ -42,7 +48,7 @@ vim.o.undofile = true
 -----------------------------------------------------------
 opt.expandtab = true        -- Use spaces instead of tabs
 opt.shiftwidth = 4          -- Shift 4 spaces when tab
-opt.tabstop = 4             -- 1 tab == 4 spaces
+opt.tabstop = 2             -- 1 tab == 4 spaces
 opt.smartindent = true      -- Autoindent new lines
 
 -----------------------------------------------------------
