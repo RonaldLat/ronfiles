@@ -128,4 +128,3 @@ local servers = { 'bashls', 'pyright', 'html', 'cssls', 'typescript-language-ser
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
-}
