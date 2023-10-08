@@ -36,7 +36,7 @@ lazy.setup({
     -- The colorscheme should be available when starting Neovim.
     {
       'navarasu/onedark.nvim',
-      lazy = false, -- make sure we load this during startup if it is your main colorscheme
+      lazy = false, -- make sure we load this during startup if it is your main colorsche
       priority = 1000, -- make sure to load this before all the other start plugins
     },
 
@@ -86,7 +86,8 @@ lazy.setup({
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
     -- Indent line
-    { 'lukas-reineke/indent-blankline.nvim' },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+
 
     -- Tag viewer
     { 'preservim/tagbar' },
@@ -193,15 +194,26 @@ lazy.setup({
 
 
 {'FrenzyExists/aquarium-vim'},
-{
+ {
   "willothy/nvim-cokeline",
   dependencies = {
-    "kyazdani42/nvim-web-devicons",
+    "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
+    "kyazdani42/nvim-web-devicons", -- If you want devicons
+    "stevearc/resession.nvim"       -- Optional, for persistent history
   },
   config = true
 },
 {"sindrets/diffview.nvim"},
 {"f-person/git-blame.nvim"},
+{"marko-cerovac/material.nvim"},
+{
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    },
+    lazy = false,
+},
+
 {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",

@@ -16,7 +16,7 @@ end
 -- See: `:help nvim-tree` 4. SETUP
 -- Each of these are documented in `:help nvim-tree.OPTION_NAME`
 -- nested options are documented by accessing them with `.` (eg: `:help nvim-tree.view.mappings.list`)
-nvim_tree.setup {
+nvim_tree.setup ({
   auto_reload_on_write = true,
   --disable_netrw = false, -> already disabled on `/core/options.lua`
   hijack_cursor = false,
@@ -29,25 +29,17 @@ nvim_tree.setup {
   reload_on_bufenter = false,
   respect_buf_cwd = false,
   on_attach = "disable",
-  remove_keymaps = false,
   select_prompts = false,
   view = {
     centralize_selection = false,
     cursorline = true,
     debounce_delay = 15,
     width = 34,
-    hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
     number = true,
     relativenumber = true,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = {
-        -- user mappings go here
-      },
-    },
     float = {
       enable = false,
       quit_on_focus_loss = true,
@@ -242,4 +234,5 @@ nvim_tree.setup {
       watcher = false,
     },
   },
-} -- END_OPTS
+}) -- END_OPTS
+
