@@ -201,6 +201,7 @@ lazy.setup({
   config = true
 },
 {"sindrets/diffview.nvim"},
+{"f-person/git-blame.nvim"},
 {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",
