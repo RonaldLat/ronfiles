@@ -1,26 +1,16 @@
---[[
-
-Neovim init file
-Maintainer: brainf+ck
-Website: https://github.com/brainfucksec/neovim-lua
-
---]]
-
--- Import Lua modules
-require('core/lazy')
-require('core/autocmds')
-require('core/keymaps')
-require('core/colors')
-require('core/statusline')
-require('core/options')
-require('lsp/lsp-zero')
-require('lsp/lsp-config')
-require('plugins/nvim-tree')
-require('plugins/indent-blankline')
-require('plugins/nvim-cmp')
-require('plugins/nvim-treesitter')
-require('plugins/alpha-nvim')
-require('plugins/telescope')
-require('plugins/lspsaga')
-require('plugins/cokeline')
-
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+require("options")
+require("keymaps")
+require("autocommands")
+require("lazy").setup("plugins")
