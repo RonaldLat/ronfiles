@@ -6,7 +6,7 @@ vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 
 local opt = vim.opt
 
-opt.timeoutlen = 2000          --delay leader expiry
+opt.timeoutlen = 3000          --delay leader expiry
 opt.autowrite = true           -- Enable auto write
 opt.clipboard = "unnamedplus"  -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"

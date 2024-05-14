@@ -15,7 +15,7 @@ return {
         }
       }
     }) -- calling setup is optional
-    vim.cmd [[colorscheme nightfox]]
+    -- vim.cmd [[colorscheme nightfox]]
   end,
 
 } -- lazy
