@@ -108,3 +108,6 @@ map('n', '<leader>bol', '<Cmd>BufferOrderByLanguage<CR>', opts)
 
 ---- NvimTree
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts) -- open/close
+
+-- Alpha
+map('n', '<leader>d', '<Cmd>Alpha<CR>', opts)
