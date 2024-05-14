@@ -101,7 +101,7 @@ map('n', '<leader>x', '<Cmd>BufferClose<CR>', opts)
 map('n', '<leader>bp', '<Cmd>BufferPick<CR>', opts)
 -- Sort automatically by...
 -- map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-map('n', '<leader>bon', '<Cmd>BufferOrderByName<CR>', opts)
+map('n', '<leader>bon', '<Cmd>BufferOrderByBufferName<CR>', opts)
 map('n', '<leader>bod', '<Cmd>BufferOrderByDirectory<CR>', opts)
 map('n', '<leader>bol', '<Cmd>BufferOrderByLanguage<CR>', opts)
 -- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
