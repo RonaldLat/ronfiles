@@ -111,3 +111,7 @@ map('n', '<leader>e', ':NvimTreeToggle<CR>', opts) -- open/close
 
 -- Alpha
 map('n', '<leader>d', '<Cmd>Alpha<CR>', opts)
+
+-- toggle diagnostics
+map('n', '<leader>di', '<Cmd>DiagnosticsToggleVirtualText<CR>', opts)
+map('n', '<leader>dt', '<Cmd>DiagnosticsToggle<CR>', opts)
