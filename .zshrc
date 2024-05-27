@@ -15,6 +15,7 @@ plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 
+alias pn="pnpm"
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
