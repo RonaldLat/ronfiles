@@ -1,0 +1,365 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+;=================================
+;   BARS
+;=================================
+
+;---------- MAINBAR-POLY ----------
+[bar/1]
+enable-ipc = true
+bottom = true
+width = 100%
+height = 30
+dpi = 124
+background = #070f03
+foreground = #e7468d
+line-size = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+separator = | 
+font-0 = Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=8
+font-1 = Hack:style=Regular:size=9
+;wm-restack = i3
+scroll-up = i3.next
+scroll-down = i3.prev
+overline-size = 10
+overline-color = ${self.background}
+underline-size = 2
+underline-color = ${self.background}
+modules-left = emblem i3 filesystem pkgupdates tray
+modules-right = cpu memory temperature wireless-network vpn volume backlight battery date
+
+
+
+;=========================================
+;	MODULES
+;=========================================
+;----- i3 -----
+[module/i3]
+type = internal/i3
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Show urgent workspaces regardless of whether the workspace is actually hidden 
+; by pin-workspaces.
+;
+; Default: false
+; New in version 3.6.0
+show-urgent = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = true
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = true
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = true
+
+; Use fuzzy (partial) matching for wc-icon.
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the name
+; Changed in version 3.7.0: Selects longest string match instead of the first match.
+; Default: false
+fuzzy-match = true
+; ws-icon-[0-9]+ = <label>;<icon>
+; NOTE: The <label> needs to match the name of the i3 workspace
+; Neither <label> nor <icon> can contain a semicolon (;)
+ws-icon-0 = 1;♚
+ws-icon-1 = 2;♛
+ws-icon-2 = 3;♜
+ws-icon-3 = 4;♝
+ws-icon-4 = 5;♞
+ws-icon-default = ♟
+; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
+; you must also define a ws-icon-5.
+; NOTE: Icon will be available as the %icon% token inside label-*
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon% %name%
+label-focused = %index%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon% %name%
+label-unfocused = %index%
+label-unfocused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon% %name%
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon% %name%
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 4
+
+; Separator in between workspaces
+label-separator = |
+label-separator-padding = 2
+label-separator-foreground = #ffb52a
+
+;----- SYSTEM TRAY -----
+[module/tray]
+type = internal/tray
+format-margin = 8px
+tray-spacing = 3px
+tray-padding = 3px
+tray-size = 50%
+tray-scale = 1.0
+tray-transparent = true
+tray-maxsize = 64
+tray-offset-y = 0
+
+
+;----- POWERMENU -----
+[module/emblem]
+type = custom/text
+format-padding = 1
+label = ⋏
+label-font = 2:size=12
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+use-ui-max = true
+interval = 5
+format-volume = 墳: <label-volume>
+format-muted = 墳: Muted
+
+;----- CPU -----
+[module/cpu]
+type = internal/cpu
+interval = 0.1
+format = <label> <ramp-coreload>
+label =  %percentage%%
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+[module/space]
+type = custom/text
+content = "Ronald" 
+content-padding = 1
+content-foreground= "#1e1e1e"
+content-background= "#ffffff"
+
+
+;----- MEMORY -----
+[module/memory]
+type = internal/memory
+interval = 0.1
+warn-percentage = 95
+format = <label> <bar-used>
+format-warn = <label-warn>
+label =   %mb_free%%
+label-warn =  %gb_used%/%gb_free%
+margin-left = 5
+
+bar-used-indicator =
+bar-used-width = 15
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-fill-font = 6
+bar-used-empty = *
+bar-used-empty-font = 6
+bar-used-empty-foreground = #444444
+
+
+;----- FILESYSTEM -----
+[module/filesystem]
+type = internal/fs
+interval = 30
+label-padding = 1
+mount-0 = /
+
+label-mounted =  %percentage_used%%
+label-unmounted =  not mounted
+label-unmounted-foreground = #f5a70a
+
+
+
+
+# ;----- VOLUME -----
+# [module/volume]
+# type = custom/script
+# exec = ~/.config/polybar/scripts/volume.sh
+# interval = 0
+# click-left = pamixer --toggle-mute
+# scroll-up = pamixer --increase 5
+# scroll-down = pamixer --decrease 5
+# format-padding = 1
+# format = <label>
+# label = %output%
+# labe w-padding = 0
+
+
+
+
+;----- TEMP ------
+[module/temperature]
+type = internal/temperature
+interval = 0.1
+zone-type = x86_pkg_temp
+base-temperature = 20
+warn-temperature = 90
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+format-padding = 0
+label =  %temperature-c%
+label-padding = 1
+label-foreground = #e7468d
+label-warn =  %temperature-c%
+label-warn-foreground = #ff8000
+
+ramp-0 = 🌡
+ramp-1 = 🌡
+ramp-2 = 🌡
+ramp-3 = 🌡
+
+
+;----- NETWORK -----
+[module/wireless-network]
+type = internal/network
+interface = wlp3s0
+interface-type = wireless
+label-font = 2
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid% %netspeed% 
+label-connected-foreground = #7f536f
+ramp-signal-foreground = #7f536f
+label-disconnected = 📶 wi-fi
+label-disconnected-foreground = #800035
+format-packetloss = <animation-packetloss> <label-connected>
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #fa8d22
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #fa8d22
+animation-packetloss-framerate = 500
+
+
+
+
+
+;----- DATE -----
+[module/date]
+type = internal/date
+date =  %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M:%%{F#fba922}%S%%{F-}
+date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+label-font = 2
+
