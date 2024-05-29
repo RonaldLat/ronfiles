@@ -11,6 +11,6 @@ return {
       borderless_telescope = true,
       terminal_colors = true,
     })
-    vim.cmd("colorscheme cyberdream") -- set the colorscheme
+    -- vim.cmd("colorscheme cyberdream") -- set the colorscheme
   end,
 }
