@@ -115,3 +115,8 @@ map('n', '<leader>d', '<Cmd>Alpha<CR>', opts)
 -- toggle diagnostics
 map('n', '<leader>di', '<Cmd>DiagnosticsToggleVirtualText<CR>', opts)
 map('n', '<leader>dt', '<Cmd>DiagnosticsToggle<CR>', opts)
+
+-- monorepo
+vim.keymap.set("n", "<leader>m", function()
+  require("telescope").extensions.monorepo.monorepo()
+end)

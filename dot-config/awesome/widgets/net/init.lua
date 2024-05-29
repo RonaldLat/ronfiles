@@ -28,7 +28,8 @@ end
 function net_widget.init(args)
   args                    = args or {}
 
-  args.wireless_interface = args.wireless_interface or "wlp3s0"
+  -- args.wireless_interface = args.wireless_interface or "wlp3s0"
+  args.wireless_interface = args.wireless_interface or "wlan0"
   args.wired_interface    = args.wired_interface or "enp2s0"
   args.path_to_icons      = args.path_to_icons or beautiful.theme_path .. "/widgets/net/"
   args.timeout            = args.timeout or 15

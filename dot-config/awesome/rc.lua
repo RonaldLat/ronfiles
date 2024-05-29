@@ -30,8 +30,8 @@ local run_shell     = require("widgets.run-shell")
 local xrandr        = require("xrandr")
 local unpack        = unpack or table.unpack -- luacheck: globals unpack (compatibility with Lua 5.1)
 -- Ronald trying to create RAM widget
-local ram_widget    = require("awesome-wm-widgets.ram-widget.ram-widget")
-local cpu_widget    = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+-- local ram_widget    = require("awesome-wm-widgets.ram-widget.ram-widget")
+-- local cpu_widget    = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 
 
 -- }}}
@@ -416,9 +416,9 @@ awful.screen.connect_for_each_screen(function(s)
     },
     { -- Middle widgets
       s.title_container,
-      ram_widget(),
+      -- ram_widget(),
       -- ram_widgy,
-      cpu_widget(),
+      -- cpu_widget(),
       layout = wibox.layout.align.horizontal,
     },
     { -- Right widgets
