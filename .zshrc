@@ -12,8 +12,9 @@ autoload -Uz compinit
 compinit
 
 #alias nvim="exec ~/Dev/ronfiles/nvim.appimage && zsh"
-alias nvim="exec /home/Dev/ronfiles/nvim.appimage"
-# alias cat=" cat"
+#alias nvim="exec /home/Dev/ronfiles/nvim.appimage"
+alias nvim="exec ~/Dev/ronfiles/nvim.appimage"
+alias cat="bat"
 alias ranger=". ranger"
 alias pacs="sudo pacman -S "
 alias pn="pnpm"
@@ -25,7 +26,7 @@ export NVM_DIR="$HOME/.nvm"
 # bun completions
 [ -s "/home/ronald/.bun/_bun" ] && source "/home/ronald/.bun/_bun"
 
-PS1='%~: '
+#PS1='%~: '
 #exec ~/.fehbg
 
 
