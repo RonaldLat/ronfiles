@@ -16,6 +16,7 @@ compinit
 alias nvim="exec ~/Dev/ronfiles/nvim.appimage"
 alias cat="bat"
 alias ranger=". ranger"
+#alias ranger="ranger"
 alias pacs="sudo pacman -S "
 alias pn="pnpm"
 
