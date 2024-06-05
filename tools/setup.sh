@@ -23,7 +23,7 @@ if [ -d "$source_folder" ]; then
     # Check if the target folder already exists
     if [ -d "$target_folder" ]; then
         # Create a symbolic link to the 'nvim' folder in the home directory
-        ln -s "$source_folder" "$target_folder/.config/nvim"
+        ln -sf "$source_folder" "$target_folder/.config/nvim"
         echo "Symlink created: $target_folder/.config/nvim -> $source_folder"
     else
         echo "Error: Target folder '$target_folder' does not exist."
@@ -45,7 +45,7 @@ if [ -f "$source_file" ]; then
         echo "Symlink already exists: $target_file -> $source_file"
     else
         # Create a symbolic link to 'tmux.conf' in the home directory
-        ln -s "$source_file" "$target_file"
+        ln -sf "$source_file" "$target_file"
 	source "$HOME/tmux.conf"
         echo "Symlink created: $target_file -> $source_file"
     fi
