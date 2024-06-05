@@ -13,7 +13,7 @@ compinit
 
 #alias nvim="exec ~/Dev/ronfiles/nvim.appimage && zsh"
 #alias nvim="exec /home/Dev/ronfiles/nvim.appimage"
-alias nvim="exec ~/Dev/ronfiles/nvim.appimage"
+alias nvim="exec nvim.appimage"
 alias cat="bat"
 alias ranger=". ranger"
 #alias ranger="ranger"
