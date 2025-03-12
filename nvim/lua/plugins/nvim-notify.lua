@@ -12,8 +12,9 @@ return {
 	config = function()
 		require("notify").setup({
 			render = "compact",
+			-- stages = "slide",
 			stages = "fade",
-			timeout = 500,
+			timeout = 1000,
 			max_height = function()
 				return math.floor(vim.o.lines * 0.75)
 			end,
