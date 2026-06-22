@@ -3,7 +3,6 @@
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/exa"
-plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 
 alias pn="pnpm"
@@ -18,10 +17,6 @@ alias vv="nvim"
 autoload -Uz compinit
 compinit
 
-#alias nvim="exec ~/Dev/ronfiles/nvim.appimage && zsh"
-#alias nvim="exec /home/Dev/ronfiles/nvim.appimage"
-#ln -sf nvim.appimage ~/
-#alias nvim="exec ~Desktop/nvim-linux"
 alias cat="bat"
 alias ranger=". ranger"
 #alias ranger="ranger"
@@ -33,12 +28,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# oh-my-posh prompt (replaces zap-prompt)
+if command -v oh-my-posh &>/dev/null && [ -f "$HOME/dotfiles/ohmyposh_themes/amro.omp.json" ]; then
+  eval "$(oh-my-posh init zsh --config ~/dotfiles/ohmyposh_themes/amro.omp.json)"
+fi
+
 # bun completions
 [ -s "/home/ronald/.bun/_bun" ] && source "/home/ronald/.bun/_bun"
-
-#PS1='%~: '
-#exec ~/.fehbg
-
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
