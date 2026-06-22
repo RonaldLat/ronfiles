@@ -20,13 +20,23 @@ else
 fi
 
 mkdir -p "$HOME/.config"
-for dir in nvim yazi; do
-  src="$DOTFILES/.config/$dir"
-  if [ -d "$src" ]; then
-    ln -sfT "$src" "$HOME/.config/$dir"
-    echo "  linked .config/$dir"
-  fi
-done
+if [ -d "$DOTFILES/dot-config" ]; then
+  for dir in nvim yazi; do
+    src="$DOTFILES/dot-config/$dir"
+    if [ -d "$src" ]; then
+      ln -sfT "$src" "$HOME/.config/$dir"
+      echo "  linked .config/$dir"
+    fi
+  done
+else
+  for dir in nvim yazi; do
+    src="$DOTFILES/.config/$dir"
+    if [ -d "$src" ]; then
+      ln -sfT "$src" "$HOME/.config/$dir"
+      echo "  linked .config/$dir"
+    fi
+  done
+fi
 
 echo "==> Installing tmux plugin manager..."
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
