@@ -7,6 +7,13 @@ plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 
 alias pn="pnpm"
+alias lg="lazygit"
+alias dc="docker compose"
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+alias dcr="docker compose restart"
+alias dcl="docker compose logs"
+alias vv="nvim"
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
