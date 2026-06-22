@@ -1,41 +1,35 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
+RONFILES="${RONFILES:-$HOME/.dotfiles}"
 
 echo "==> Linking dotfiles..."
 
-# Compatibility symlink
-ln -sfT "$DOTFILES" "$HOME/dotfiles"
+ln -sf "$RONFILES/.zshrc"   "$HOME/.zshrc"
+ln -sf "$RONFILES/.fehbg"   "$HOME/.fehbg"
 
-ln -sf "$DOTFILES/.zshrc"   "$HOME/.zshrc"
-ln -sf "$DOTFILES/.fehbg"   "$HOME/.fehbg"
-
-# .tmux.conf — fetch from dotfiles repo if not present
-if [ ! -f "$DOTFILES/.tmux.conf" ]; then
-  curl -fsSL https://raw.githubusercontent.com/RonaldLat/dotfiles/master/.tmux.conf \
-    -o "$HOME/.tmux.conf"
-else
-  ln -sf "$DOTFILES/.tmux.conf" "$HOME/.tmux.conf"
+# Clone RonaldLat/dotfiles for themes, yazi, and extra configs
+if [ ! -d "$HOME/dotfiles" ]; then
+  echo "==> Cloning dotfiles repo..."
+  git clone https://github.com/RonaldLat/dotfiles.git "$HOME/dotfiles"
 fi
 
+# .tmux.conf — from dotfiles repo
+if [ -f "$HOME/dotfiles/.tmux.conf" ]; then
+  ln -sf "$HOME/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+fi
+
+# Nvim config — from ronfiles dot-config
 mkdir -p "$HOME/.config"
-if [ -d "$DOTFILES/dot-config" ]; then
-  for dir in nvim yazi; do
-    src="$DOTFILES/dot-config/$dir"
-    if [ -d "$src" ]; then
-      ln -sfT "$src" "$HOME/.config/$dir"
-      echo "  linked .config/$dir"
-    fi
-  done
-else
-  for dir in nvim yazi; do
-    src="$DOTFILES/.config/$dir"
-    if [ -d "$src" ]; then
-      ln -sfT "$src" "$HOME/.config/$dir"
-      echo "  linked .config/$dir"
-    fi
-  done
+if [ -d "$RONFILES/dot-config/nvim" ]; then
+  ln -sfT "$RONFILES/dot-config/nvim" "$HOME/.config/nvim"
+  echo "  linked .config/nvim"
+fi
+
+# Yazi config — from dotfiles/yazi.bak
+if [ -d "$HOME/dotfiles/yazi.bak" ]; then
+  ln -sfT "$HOME/dotfiles/yazi.bak" "$HOME/.config/yazi"
+  echo "  linked .config/yazi"
 fi
 
 echo "==> Installing tmux plugin manager..."
